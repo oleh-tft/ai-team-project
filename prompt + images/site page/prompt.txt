@@ -1,0 +1,58 @@
+A high-quality modern web design hero section for a trendy coffee shop website, kawaii and soft aesthetic.
+
+The layout represents the first screen (homepage hero section) of a website.
+
+Style: cute kawaii, modern UI/UX, soft pastel colors, minimalistic, friendly, trendy Gen Z vibe, clean composition, smooth gradients, subtle shadows, rounded corners, glassmorphism elements, playful but elegant.
+
+Background: bright pastel sky with soft clouds, light blue gradient sky, airy and dreamy atmosphere, calm daylight mood.
+
+Main focus (center-right):
+A large, beautifully designed coffee cup in the center-right of the screen.
+The cup is glossy, ceramic, creamy white.
+The coffee cup has a cute cat face logo (simple kawaii cat face, minimal lines, blush cheeks).
+The coffee foam inside the cup has soft latte art.
+
+On the cup or near it, the brand name “Tokayo” is visible in clean, modern typography.
+
+Left side – Registration / Loyalty form:
+A semi-transparent glassmorphism registration form placed on the left side of the hero section.
+The form has a frosted glass look, soft blur background, rounded corners, light white transparency, subtle shadow.
+
+Form purpose: coffee loyalty / rewards system registration.
+
+Form elements (inputs):
+ • Text input: Full Name
+ • Email input: Email Address
+ • Phone input: Phone Number
+ • Date input: Birthday (for bonus rewards)
+ • Checkbox: I agree to receive rewards and offers
+ • Primary rounded button: Join Tokayo Rewards
+
+Inputs are rounded, minimal, soft pastel outlines, clean placeholders, modern UI style.
+
+Floating elements:
+Small floating rounded stickers, bubbles, or UI badges around the cup and form, playful abstract shapes (no readable text needed), soft pastel colors (pink, yellow, lavender, baby blue).
+
+Header / Navigation bar (top of the page):
+ • Left side: small minimalist logo or text logo “Tokayo”
+ • Center or right navigation links: Menu, About, Contact
+ • Right side icons: Search icon, Profile/User icon
+
+Header style is minimal, semi-transparent, slightly frosted glass effect, rounded edges.
+
+Typography:
+Modern rounded sans-serif font, bold headline, friendly and clean.
+Large hero headline text (placeholder style, not readable content required).
+
+UI details:
+ • Rounded buttons
+ • Soft shadows
+ • Subtle depth
+ • Clean spacing
+ • High-end modern web aesthetic
+
+Overall feeling:
+Cute, cozy, premium coffee brand, loyalty-focused cafe, Instagram-friendly, modern startup cafe website, playful but professional, visually appealing hero section.
+
+Output requirements:
+Ultra high resolution, web UI mockup style, no real photos, fully illustrated, polished design, dribbble / behance style presentation, front view, no perspective distortion.

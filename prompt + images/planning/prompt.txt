@@ -1,0 +1,145 @@
+Create a hyper-realistic, architect-grade apartment floor plan (scheme) based on the specifications below. The result should look like a professional real-estate or architectural presentation, clean, accurate, and visually premium.
+
+Overall Concept
+
+Design a modern, well-balanced apartment layout with a logical flow between spaces. The plan must clearly show room functions, proportions, entrances, and circulation.
+
+The apartment must include:
+
+1 regular bedroom
+
+1 master bedroom
+
+Kitchen connected to the living room (open-plan studio)
+
+1 bathroom
+
+1 hallway (main circulation space)
+
+At least 1 balcony
+
+Style & Visual Quality
+
+Rendering Style:
+
+Hyper-realistic architectural visualization
+
+Clean, professional, high-end real-estate brochure look
+
+Precise lines, soft shadows, realistic lighting, correct perspective
+
+Color Palette:
+
+Neutral architectural tones: soft whites, warm beige, light wood textures, muted greys
+
+Subtle contrast between rooms for clarity
+
+No overly saturated colors
+
+Materials & Textures:
+
+Light wood flooring in living areas and bedrooms
+
+Neutral tile in bathroom and kitchen zone
+
+Glass elements for balcony doors
+
+Minimalistic modern interior style
+
+Layout & Structure
+
+Hallway (Entrance & Circulation):
+
+The apartment entrance opens directly into a hallway, not into any room
+
+The hallway provides direct access to all main areas: bedrooms, bathroom, and living zone
+
+Clean, straight circulation with no awkward angles
+
+Living Room + Kitchen (Open Plan):
+
+Kitchen must be connected to the living room in a single open space
+
+Kitchen zone clearly separated visually using layout or flooring change
+
+Living room oriented toward natural light
+
+Balcony access from either the living room or kitchen area
+
+Master Bedroom:
+
+Larger than the regular bedroom
+
+Clear bed placement, wardrobes, and walking space
+
+If possible, direct or visual proximity to the balcony
+
+Solid bedroom door (no glass doors)
+
+Regular Bedroom:
+
+Smaller than the master bedroom
+
+Accessible only from the hallway (not through another room)
+
+Suitable for guest room, child’s room, or home office
+
+Bathroom:
+
+Single combined bathroom (toilet + shower/bath)
+
+Positioned near the hallway for easy access from all rooms
+
+Realistic sanitary layout: sink, toilet, shower or bathtub
+
+Balcony:
+
+At least one balcony
+
+Must have a logical door placement from the living room or master bedroom
+
+Exterior feel with railing, light, and outdoor flooring
+
+Text & Labels
+
+Each room must be clearly labeled directly on the plan with clean, modern typography:
+
+“Living Room”
+
+“Kitchen”
+
+“Master Bedroom”
+
+“Bedroom”
+
+“Bathroom”
+
+“Hallway”
+
+“Balcony”
+
+Labels must be readable but not overpower the design
+
+Perspective & Composition
+
+Top-down or slightly angled architectural view
+
+Correct proportions and realistic scale of furniture
+
+Balanced composition with clean margins
+
+No unnecessary decorative elements
+
+Quality Requirements
+
+Ultra-high resolution
+
+No distorted geometry
+
+No overlapping rooms
+
+No doors through other bedrooms
+
+No entrances directly into the bathroom
+
+Logical circulation and functional realism

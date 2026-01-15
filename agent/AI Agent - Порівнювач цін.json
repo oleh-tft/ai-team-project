@@ -1,0 +1,280 @@
+{
+  "name": "AI Agent - Порівнювач цін",
+  "nodes": [
+    {
+      "parameters": {
+        "availableInChat": true,
+        "agentName": "AI Agent - Poor student in Odesa",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -576,
+        1056
+      ],
+      "id": "46c9c331-b707-436a-a034-f24d9bbe5519",
+      "name": "When chat message received",
+      "webhookId": "23e3747e-c937-4f3b-b901-03a31efb394b"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -384,
+        1264
+      ],
+      "id": "292fb8ff-de9b-498f-bbe9-696a881c3c59",
+      "name": "OpenAI Chat Model",
+      "notesInFlow": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "4jasEnGDug917aDb",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You will receive a list of grocery product names in Ukrainian.\n\nYour task is to normalize each item into a search-ready product name.\n\nSTRICT RULES:\n\n1. If the product is a GENERIC product (eggs, milk, water, sour cream, etc.) — keep it in Ukrainian.\n   Example: \"яйця\" → \"яйця\"\n\n2. If the product is an INTERNATIONAL BRAND written in Ukrainian phonetically,\n   convert it to its OFFICIAL English brand name.\n   Examples:\n   - \"орео\" → \"oreo\"\n   - \"снікерс\" → \"snickers\"\n   - \"кока кола\" → \"coca cola\"\n\n3. If the product name is ALREADY in English — keep it unchanged.\n\n4. Do NOT invent or add any weight, volume, flavor, or additional details.\n   Only include weight/volume if it is explicitly present in the original name.\n\n5. The result must be as primitive and minimal as possible.\n   No adjectives, no clarifications.\n\n6. Do NOT add comments or explanations.\n\nOUTPUT FORMAT (JSON array ONLY):\n\n[\n  {\n    \"original\": \"<original input>\",\n    \"search\": \"<normalized search string>\"\n  }\n]\n\nInput:\n{{$json.chatInput}}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -384,
+        1056
+      ],
+      "id": "b68720a6-542f-4d30-856a-3b79c12e21a9",
+      "name": "AI Agent",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "chatId": "-5104194511",
+        "text": "={{ $json.output[0].content[0].text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        960,
+        1056
+      ],
+      "id": "27ea9e17-bcb1-4b6e-a3d3-53603c024d90",
+      "name": "Send a text message",
+      "webhookId": "6a0885bf-253a-4842-9a41-6a5d4f955e35",
+      "credentials": {
+        "telegramApi": {
+          "id": "07pVrLTk8drFWWCh",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://45.82.255.216:8001/check-prices",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $items().map(item => item.json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        192,
+        1056
+      ],
+      "id": "94e87792-18f0-4f90-ae8e-25e0dbc92dd7",
+      "name": "HTTP Request",
+      "notesInFlow": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.output;\nconst parsed = JSON.parse(raw);\n\nreturn parsed.map(obj => ({\n  json: obj\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        1056
+      ],
+      "id": "2a551dc0-b0c9-4523-af17-be32f7cd0dcf",
+      "name": "Code in JavaScript",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return [ { json: { text: JSON.stringify($input.all(), null, 2) } } ];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        1056
+      ],
+      "id": "beb8e8c0-6356-4d63-93e4-cb78c65be56c",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=Input is a JSON array. Each element has the following structure:\n\n{\n  \"original\": \"...\",\n  \"sites\": {\n    \"Таврія В\": [{ \"name\": \"...\", \"price\": number }, ...],\n    \"Обжора\":   [{ \"name\": \"...\", \"price\": number }, ...],\n    \"Копійка\":  [{ \"name\": \"...\", \"price\": number }, ...]\n  }\n}\n\n\n\"original\" — the original user search query, which is used to find the most profitable item in this input array.\n\"sites\" — a list of websites where this product is searched for.\n\"Таврія В\": [{ \"name\": \"...\", \"price\": number }, ...] — a list of products found on a specific website, including their name and price.\n\nYour task\n\nYou need to find, for each store website, the product that best matches the original query.\n\nStep 1:\nCompare the original query with the found product names and select the closest match.\nIf no specific product parameters are mentioned (e.g. weight, flavor, limited edition, mini version, etc.), choose the most classic/default version.\n\nStep 2:\nFind the best value offer in each store based on the quantity / weight / volume to price ratio.\n\nStep 3:\nRepeat this process for all original products in every store.\n\nAs a result, you will have 3 best offers (one per store) for each original product.\n\nFor each store, you will then have a list of the most profitable items matching all the client’s original queries — this will be called the “cart”.\n\nIMPORTANT:\nIf the closest matching product to the original query is not found, you must NOT suggest alternatives.\nExample: if the client is looking for Kit Kat and it is not available, you must NOT suggest Kit Kat cake / ice cream / drink, etc.\n\nStep 4:\nCalculate the total price of each store’s cart.\nIf a product is missing in a specific store, calculate that store’s cart without that product.\nThen, determine which cart is the cheapest overall.\n\nOutput format:\n    <b>🛍️ Ваш найвигідніший кошик:</b>\n\n    🏬 Магазин: <i>{store name}</i>\n\n    • {product name} - {price}₴\n    • {product name 2} - {price 2}₴\n    • ...\n\n    💰 Загальна вартість: <b>{total cart price(all products combined)}₴</b>\n\n\nIMPORTANT:\nIf the cheapest cart is missing a product, display it like this:\n\n• <s>{product name}</s>\n\n\nYour response must contain only the output specified above, without any comments.\n\nDATA:\n\n{{ $json.text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        592,
+        1056
+      ],
+      "id": "d8e96192-e11d-4bbc-80c2-422e994b9345",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "4jasEnGDug917aDb",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "availableInMCP": false
+  },
+  "versionId": "6312e728-88e5-4e83-8d02-a50f4af2f5d0",
+  "meta": {
+    "templateId": "ready-to-run-ai-workflow",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41634df57fd3c097dd539e5ad0a0c118a62cb27f7b0be16c1bd9788e5173ad80"
+  },
+  "id": "1xKOKdQKQosHBMXI",
+  "tags": []
+}
