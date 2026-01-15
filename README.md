@@ -12,11 +12,12 @@
 
 Аналіз генерації зображень за допомогою моделей ChatGPT Image та Gemini Nano Banana. У межах завдання проводиться порівняння якості генерації, особливостей роботи моделей та отриманих результатів.
 
+![5](https://github.com/user-attachments/assets/412065e5-c675-4ccd-9e48-6f639640ff5b)
 ![1](https://github.com/user-attachments/assets/b859a996-a043-418c-b8fa-ebbd1c1b1b9a)
 ![2](https://github.com/user-attachments/assets/adc96774-407a-487f-83c8-57f23aab6036)
 ![3](https://github.com/user-attachments/assets/96b2aedc-6847-403f-b441-ce401aef8f80)
 ![4](https://github.com/user-attachments/assets/c3177868-0801-4a7c-bac2-e9ba74284a10)
-![5](https://github.com/user-attachments/assets/412065e5-c675-4ccd-9e48-6f639640ff5b)
+
 
 
 Завдання 2
